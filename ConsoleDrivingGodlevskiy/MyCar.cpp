@@ -5,7 +5,7 @@
 MyCar::MyCar()
 {
 	x = 20;
-	y = 20;
+	y = 23;
 	viewHeight = 5;
 	viewWidht = 4;
 	maxSpeed = 15;

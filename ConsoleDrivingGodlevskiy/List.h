@@ -1,41 +1,57 @@
-#pragma once
+#pragma once;
 #include "GameObject.h"
 
-// Элемент данных
-struct Element
+struct Elem
 {
-	// Данные
-	GameObject * data;
-	// Адрес следующего элемента списка
-	Element * Next;
+	GameObject * data; // данные
+	Elem *next, *prev;
 };
 
-// Односвязный список
 class List
 {
-	// Адрес головного элемента списка
-	Element * Head;
-	// Количество элементов списка
+	// Голова, хвост
+	Elem *Head, *Tail;
+	// Количество элементов
 	int Count;
 
 public:
+
 	// Конструктор
 	List();
+
+	// Конструктор копирования
+	List(const List&);
 
 	// Деструктор
 	~List();
 
-	// Добавление элемента в список
-	// (Новый элемент становится головным)
-	void Add(GameObject *data);
-	
-	// Удаление элемента списка
-	// (Удаляется головной элемент)
-	void Del();
-	
-	// удаление всех элементов списка
-	void DelAll();		
-	
-	// Получение количества элементов, находящихся в списке
+	// Получить количество элементов
 	int GetCount();
+
+	// Получить элемент списка
+	Elem* GetElem(int);
+
+	// Удалить весь список
+	void DelAll();
+
+	// Удаление элемента по индексу
+	void Del(int pos);
+
+	// Вставка элемента в заданную позицию
+	void Insert(GameObject * data, int pos);
+
+	// Добавление в конец списка
+	void AddTail(GameObject * data);
+
+	// Добавление в начало списка
+	void AddHead(GameObject * data);
+
+	//Удаление головного элемента
+	void DelHead();
+
+	//Удаление хвостового элемента
+	void DelTail();
+
+	//перегрузка оператора =
+	List& operator = (const List&);
 };

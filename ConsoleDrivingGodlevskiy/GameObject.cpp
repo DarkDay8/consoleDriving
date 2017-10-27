@@ -8,6 +8,11 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
+	for (int i = 0; i < viewWidht; i++)
+	{
+		delete[] view[i];
+	}
+	delete[] view;
 }
 
 void GameObject::SetX(int x)

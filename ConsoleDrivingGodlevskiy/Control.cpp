@@ -32,3 +32,21 @@ void Control::CarControl(Car * car)
 		car->SetSpeed(car->GetSpeed() - 1);
 	}
 }
+
+bool Control::Pause(Draw * draw)
+{
+
+		if (GetKeyState(VK_RETURN))
+		{
+			draw->WriteStr(25, 28, "PAUSE!!!");
+			return true;			
+		}	
+}
+
+void Control::Exit()
+{
+	if (GetAsyncKeyState(VK_ESCAPE))
+	{
+		exit(0);
+	}
+}

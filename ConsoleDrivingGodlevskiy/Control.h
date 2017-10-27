@@ -9,8 +9,11 @@ class Control
 public:
 	Control();
 	~Control();
+	//управление автомобилем
 	void CarControl(Car * car);
+	//установка игры на паузу
 	bool Pause(Draw * draw);
+	//Выход из игры
 	void Exit();
 };
 

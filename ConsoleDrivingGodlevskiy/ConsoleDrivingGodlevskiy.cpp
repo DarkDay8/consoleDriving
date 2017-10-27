@@ -24,7 +24,6 @@ int main()
 		addNewBorder(borderlist, leftX, rightX, i);
 	}
 
-
 	while (true)
 	{
 		while (!control.Pause(&draw))

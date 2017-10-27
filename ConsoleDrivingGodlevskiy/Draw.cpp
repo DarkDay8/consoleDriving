@@ -51,7 +51,7 @@ void Draw::DrawGameObject(GameObject * gameObject, int maxY)
 {
 	for (int i = 0; i < gameObject->GetViewWidht(); i++)
 	{
-		if (gameObject->GetY() + i < maxY)
+		if ((gameObject->GetY() + i < maxY))
 			WriteStr(gameObject->GetX(), gameObject->GetY() + i, gameObject->GetView()[i]);
 	}
 }

@@ -12,6 +12,7 @@ int main()
 	MyCar myCar;
 	Draw draw;
 	List borderlist;
+	List wallList;
 
 	int leftX = 0;
 	int rightX = 0;
@@ -20,25 +21,47 @@ int main()
 	{
 		addNewBorder(borderlist, leftX, rightX, i);
 	}
+	wallList.AddHead(new Wall(50, 10));
 
 	while (true)
 	{
 		while (!control.Pause(&draw))
 		{
-			control.CarControl(&myCar);
+			
 			control.Exit();
 
 			system("cls");
 			for (int i = 0; i < maxLines * 2; i++)
 			{
-				draw.DrawGameObject(borderlist.GetElem(i)->data, maxLines);
+				
+				if ((myCar.GetX() <= borderlist.GetElem(i)->data->GetX()) &&
+					(myCar.GetX() + myCar.GetViewHeight() - 2 >= borderlist.GetElem(i)->data->GetX()) &&
+					(myCar.GetY() <= borderlist.GetElem(i)->data->GetY()) &&
+					(myCar.GetY() + myCar.GetViewWidht()  - 1 >= borderlist.GetElem(i)->data->GetY()))
+				{
+					draw.WriteStr(25, 29, "BOOOM!!!");
+				}
+				draw.DrawGameObject(borderlist.GetElem(i)->data, maxLines);					
 				borderlist.GetElem(i)->data->SetY(borderlist.GetElem(i)->data->GetY() + 1);
 			}
+			draw.SetColor(Red, Red);
+			draw.DrawGameObject(wallList.GetElem(0)->data, maxLines);
+			draw.SetColor(White, Black);
+
+			for (int i = 0; i < wallList.GetCount(); i++)
+			{
+				draw.DrawGameObject(wallList.GetElem(i)->data, maxLines);
+				wallList.GetElem(i)->data->SetY(wallList.GetElem(i)->data->GetY() + 1);
+			}
+
+			if (rand() % 10 > 3) wallList.AddHead(new Wall(20, 0));
+
 			DrawCar(draw, myCar, maxLines);
 
 			borderlist.DelTail();
 			borderlist.DelTail();
 			addNewBorder(borderlist, leftX, rightX, 0);
+			control.CarControl(&myCar);
 
 			Sleep(500 - 30 * myCar.GetSpeed());
 		}

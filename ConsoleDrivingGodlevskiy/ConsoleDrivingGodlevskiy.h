@@ -8,6 +8,7 @@
 #include "Border.h"
 #include "Control.h"
 #include "List.h"
+#include "Wall.h"
 
 int main();
 

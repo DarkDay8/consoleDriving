@@ -15,5 +15,5 @@ int main();
 void addNewBorder(List &borderlist, int &leftX, int &rightX, int y);
 
 void DrawCar(Draw &draw, GameObject &car, int maxLines);
-
+void DrawInterface(Draw &draw, MyCar &car, int distance);
 void GameOver(Draw & draw, int distance);

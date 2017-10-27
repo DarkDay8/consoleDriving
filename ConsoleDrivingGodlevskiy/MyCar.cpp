@@ -1,6 +1,4 @@
-
 #include "MyCar.h"
-
 
 MyCar::MyCar()
 {
@@ -17,7 +15,6 @@ MyCar::MyCar()
 	view[3] = new char [viewHeight] { '0', '/', '\\', '0', '\0' };
 
 }
-
 
 MyCar::~MyCar()
 {

@@ -1,7 +1,5 @@
 #include "Border.h"
 
-
-
 Border::Border()
 {
 	viewHeight = 2;
@@ -16,7 +14,6 @@ Border::Border(int x, int y) : Border()
 	this->x = x;
 	this->y = y;
 }
-
 
 Border::~Border()
 {

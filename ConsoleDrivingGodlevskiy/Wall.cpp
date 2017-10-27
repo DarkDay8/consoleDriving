@@ -1,7 +1,5 @@
 #include "Wall.h"
 
-
-
 Wall::Wall()
 {
 	viewHeight = 6;
@@ -17,7 +15,6 @@ Wall::Wall(int x, int y) : Wall()
 	this->x = x;
 	this->y = y;
 }
-
 
 Wall::~Wall()
 {

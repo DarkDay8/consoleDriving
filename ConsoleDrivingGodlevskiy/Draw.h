@@ -1,6 +1,7 @@
 #pragma once
 #define __CONSOLELIB_H__
 #include <windows.h>
+#include <iostream>
 #include "GameObject.h"
 
 // Цвета

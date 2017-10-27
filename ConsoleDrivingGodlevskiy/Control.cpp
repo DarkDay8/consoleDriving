@@ -1,7 +1,5 @@
 #include "Control.h"
 
-
-
 Control::Control()
 {
 }
@@ -35,7 +33,6 @@ void Control::CarControl(Car * car)
 
 bool Control::Pause(Draw * draw)
 {
-
 		if (GetKeyState(VK_RETURN))
 		{
 			draw->WriteStr(25, 28, "PAUSE!!!");

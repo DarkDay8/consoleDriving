@@ -1,10 +1,8 @@
 #include "GameObject.h"
 
-
 GameObject::GameObject()
 {
 }
-
 
 GameObject::~GameObject()
 {
@@ -24,7 +22,6 @@ void GameObject::SetY(int y)
 {
 	this->y = y;
 }
-
 
 int GameObject::GetX()
 {

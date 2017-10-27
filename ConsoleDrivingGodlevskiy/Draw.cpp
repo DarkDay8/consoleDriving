@@ -1,7 +1,4 @@
 #include "Draw.h"
-#include <windows.h>
-#include "Draw.h"
-#include <iostream>
 using namespace std;
 
 // Хендлы консоли
@@ -12,12 +9,9 @@ Draw::Draw()
 {
 }
 
-
 Draw::~Draw()
 {
 }
-
-
 
 // Показываем/прячем текстовый курсор
 void Draw::ShowCursor(bool visible)

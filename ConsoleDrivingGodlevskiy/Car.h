@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
- class Car: public GameObject
+class Car: public GameObject
 {
 protected:
 	int speed;

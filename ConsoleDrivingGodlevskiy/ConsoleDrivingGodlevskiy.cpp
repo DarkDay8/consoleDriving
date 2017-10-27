@@ -1,5 +1,3 @@
-
-
 #include "ConsoleDrivingGodlevskiy.h"
 
 int main()

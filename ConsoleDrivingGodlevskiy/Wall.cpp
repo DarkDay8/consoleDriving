@@ -4,7 +4,7 @@
 
 Wall::Wall()
 {
-	viewHeight = 5;
+	viewHeight = 6;
 	viewWidht = 3;
 	view = new char *[viewWidht];
 	view[0] = new char [viewHeight] {'/', '-', '-', '-', '\\', '\0'};
@@ -12,7 +12,7 @@ Wall::Wall()
 	view[2] = new char [viewHeight] {'\\', '-', '-', '-', '/', '\0'};
 }
 
-Wall::Wall(int x, int y)
+Wall::Wall(int x, int y) : Wall()
 {
 	this->x = x;
 	this->y = y;

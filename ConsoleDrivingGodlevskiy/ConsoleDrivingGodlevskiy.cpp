@@ -13,24 +13,25 @@ int main()
 	Draw draw;
 	List borderlist;
 	List wallList;
-
+	int distance = 0;
 	int leftX = 0;
 	int rightX = 0;
+
+	draw.ShowCursor(false);
 
 	for (int i = maxLines - 1; i >= 0; i--)
 	{
 		addNewBorder(borderlist, leftX, rightX, i);
 	}
-	wallList.AddHead(new Wall(50, 10));
+
 
 	while (true)
 	{
 		while (!control.Pause(&draw))
-		{
-			
+		{			
 			control.Exit();
-
 			system("cls");
+
 			for (int i = 0; i < maxLines * 2; i++)
 			{
 				
@@ -39,22 +40,30 @@ int main()
 					(myCar.GetY() <= borderlist.GetElem(i)->data->GetY()) &&
 					(myCar.GetY() + myCar.GetViewWidht()  - 1 >= borderlist.GetElem(i)->data->GetY()))
 				{
+					GameOver(draw, distance);
 					draw.WriteStr(25, 29, "BOOOM!!!");
 				}
 				draw.DrawGameObject(borderlist.GetElem(i)->data, maxLines);					
 				borderlist.GetElem(i)->data->SetY(borderlist.GetElem(i)->data->GetY() + 1);
 			}
-			draw.SetColor(Red, Red);
-			draw.DrawGameObject(wallList.GetElem(0)->data, maxLines);
-			draw.SetColor(White, Black);
 
+			draw.SetColor(Yellow, Black);
 			for (int i = 0; i < wallList.GetCount(); i++)
 			{
+				if ((myCar.GetX() <= wallList.GetElem(i)->data->GetX() + wallList.GetElem(i)->data->GetViewHeight() - 2) &&
+					(myCar.GetX() + myCar.GetViewHeight()  - 2 >= wallList.GetElem(i)->data->GetX()) &&
+					(myCar.GetY() <= wallList.GetElem(i)->data->GetY() + wallList.GetElem(i)->data->GetViewWidht() - 1) &&
+					(myCar.GetY() + myCar.GetViewWidht()  - 1 >= wallList.GetElem(i)->data->GetY()))
+				{
+					GameOver(draw, distance);
+					draw.WriteStr(25, 29, "BOOOM!!!");
+				}
 				draw.DrawGameObject(wallList.GetElem(i)->data, maxLines);
 				wallList.GetElem(i)->data->SetY(wallList.GetElem(i)->data->GetY() + 1);
 			}
+			draw.SetColor(White, Black);
 
-			if (rand() % 10 > 3) wallList.AddHead(new Wall(20, 0));
+			if (rand() % 100 < 15) wallList.AddHead(new Wall(rand() % 45 + 10, -3));
 
 			DrawCar(draw, myCar, maxLines);
 
@@ -64,6 +73,7 @@ int main()
 			control.CarControl(&myCar);
 
 			Sleep(500 - 30 * myCar.GetSpeed());
+			distance++;
 		}
 		control.Exit();
 		Sleep(500);
@@ -89,5 +99,15 @@ void DrawCar(Draw & draw, GameObject & car, int maxLines)
 	draw.SetColor(White, Black);
 }
 
+void GameOver(Draw & draw, int distance)
+{
+	system("cls");
+	draw.GotoXY(31, 17);
+	printf("GAME OVER");
+	draw.GotoXY(23, 20);
+	printf("You drove %d kilometers", distance);
+	Sleep(5000);
+	exit(0);
+}
 
 

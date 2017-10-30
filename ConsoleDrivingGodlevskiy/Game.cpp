@@ -15,6 +15,8 @@ Game::Game(int maxLines)
 
 Game::~Game()
 {
+	borderlist.DelAll();
+	wallList.DelAll();
 }
 
 void Game::addNewBorder(List & borderlist, int & leftX, int & rightX, int y)

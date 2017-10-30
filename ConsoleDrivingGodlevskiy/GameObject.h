@@ -1,31 +1,27 @@
-#pragma once
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 
 class GameObject
 {
-protected:
-	//начальная координата по х (верхний левый угол)
-	int x;
-	//начальная координата по н (верхний левый угол)
-	int y;
-	//изображение обьекта 
-	char ** view;
-	//ширина изображения (+ символ конца строки)
-	int viewHeight;
-	//Высота изображения
-	int viewWidht;
 public:
 	GameObject();
 	~GameObject();
-	//модификаторы
-	void SetX(int x);
-	void SetY(int y);
-	//методы аксессоры 
-	int GetX();
-	int GetY();
-	int GetViewWidht();
-	int GetViewHeight();
-	char ** GetView();
-	//заглушка чтобы не создавать экземпляры базового класса
-	virtual bool IsDead() = 0;
+
+	void setX(int x);
+	void setY(int y);
+	int getX();
+	int getY();
+	int getViewWidht();
+	int getViewHeight();
+	char ** getView();
+	virtual bool isDead() = 0;
+
+protected:
+	int x_;
+	int y_;
+	char ** view_;
+	int viewHeight_;
+	int viewWidht_;
 };
 
+#endif // GAMEOBJECT_H

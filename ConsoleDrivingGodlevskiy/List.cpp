@@ -4,103 +4,113 @@ using namespace std;
 
 List::List()
 {
-	Head = Tail = nullptr;
-	Count = 0;
+	head_ = tail_ = nullptr;
+	count_ = 0;
 }
 
-List::List(const List & L)
+List::List(const List& list)
 {
-	Head = Tail = nullptr;
-	Count = 0;
-	Elem * temp = L.Head;
+	head_ = tail_ = nullptr;
+	count_ = 0;
+	Elem* temp = list.head_;
+
 	while (temp != nullptr)
 	{
-		AddTail(temp->data);
+		addTail(temp->data);
 		temp = temp->next;
 	}
 }
 
 List::~List()
 {
-	DelAll();
+	delAll();
 }
 
-void List::AddHead(GameObject * data)
+void List::addHead(GameObject* data)
 {
-	Elem * temp = new Elem;
+	Elem* temp = new Elem;
 	temp->prev = nullptr;
 	temp->data = data;
-	temp->next = Head;
-	if (Head != nullptr)
-		Head->prev = temp;
-	Head = temp;
-	if (Tail == nullptr)
-		Tail = temp;
-	Count++;
+	temp->next = head_;
+
+	if (head_ != nullptr)
+		head_->prev = temp;
+	head_ = temp;
+
+	if (tail_ == nullptr)
+		tail_ = temp;
+	count_++;
 }
 
-void List::AddTail(GameObject * data)
+void List::addTail(GameObject* data)
 {
 	Elem * temp = new Elem;
 	temp->next = nullptr;
 	temp->data = data;
-	temp->prev = Tail;
-	if (Tail != nullptr)
-		Tail->next = temp;
-	Tail = temp;
-	if (Head == nullptr)
-		Head = temp;
-	Count++;
+	temp->prev = tail_;
+
+	if (tail_ != nullptr)
+		tail_->next = temp;
+	tail_ = temp;
+
+	if (head_ == nullptr)
+		head_ = temp;
+	count_++;
 }
 
-void List::DelHead()
+void List::delHead()
 {
-	if (Head != nullptr)
+	if (head_ != nullptr)
 	{
-		Elem *temp = Head;
-		Head = Head->next;
-		if (Head != nullptr)
-			Head->prev = nullptr;
+		Elem* temp = head_;
+		head_ = head_->next;
+
+		if (head_ != nullptr)
+			head_->prev = nullptr;
 		else
-			Tail = nullptr;
+			tail_ = nullptr;
 		delete temp;
-		Count--;
+		count_--;
 	}
 }
 
-void List::DelTail()
+void List::delTail()
 {
-	if (Tail != nullptr)
+	if (tail_ != nullptr)
 	{
-		Elem *temp = Tail;
-		Tail = Tail->prev;
-		if (Tail != nullptr)
-			Tail->next = nullptr;
+		Elem* temp = tail_;
+		tail_ = tail_->prev;
+
+		if (tail_ != nullptr)
+			tail_->next = nullptr;
 		else
-			Head = nullptr;
+			head_ = nullptr;
 		delete temp;
-		Count--;
+		count_--;
 	}
 }
 
-void List::Insert(GameObject * data, int pos)
+void List::insert(GameObject* data, int pos)
 {
-	if (pos < 0 || pos > Count)
+	if (pos < 0 || pos > count_)
 		return;
+
 	if (pos == 0)
 	{
-		AddHead(data);
+		addHead(data);
 		return;
 	}
-	if (pos == Count)
+
+	if (pos == count_)
 	{
-		AddTail(data);
+		addTail(data);
 		return;
 	}
-	Elem *current = nullptr;
-	if (pos < Count / 2)
+	Elem* current = nullptr;
+
+	if (pos < count_ / 2)
 	{
-		current = Head;
+		current = head_;
 		int i = 0;
 		while (i < pos)
 		{
@@ -110,8 +120,8 @@ void List::Insert(GameObject * data, int pos)
 	}
 	else
 	{
-		current = Tail;
-		int i = Count - 1;
+		current = tail_;
+		int i = count_ - 1;
 		while (i > pos)
 		{
 			current = current->prev;
@@ -124,28 +134,32 @@ void List::Insert(GameObject * data, int pos)
 	temp->next = current;
 	current->prev->next = temp;
 	current->prev = temp;
-	Count++;
+	count_++;
 }
 
-void List::Del(int pos)
+void List::del(int pos)
 {
-	if (pos < 0 || pos >= Count)
+	if (pos < 0 || pos >= count_)
 		return;
+
 	if (pos == 0)
 	{
-		DelHead();
+		delHead();
 		return;
 	}
-	if (pos == Count - 1)
+
+	if (pos == count_ - 1)
 	{
-		DelTail();
+		delTail();
 		return;
 	}
-	Elem *delElement = nullptr;
-	if (pos < Count / 2)
+	Elem* delElement = nullptr;
+
+	if (pos < count_ / 2)
 	{
-		delElement = Head;
+		delElement = head_;
 		int i = 0;
+
 		while (i < pos)
 		{
 			delElement = delElement->next;
@@ -154,8 +168,9 @@ void List::Del(int pos)
 	}
 	else
 	{
-		delElement = Tail;
-		int i = Count - 1;
+		delElement = tail_;
+		int i = count_ - 1;
+
 		while (i > pos)
 		{
 			delElement = delElement->prev;
@@ -165,25 +180,25 @@ void List::Del(int pos)
 	delElement->prev->next = delElement->next;
 	delElement->next->prev = delElement->prev;
 	delete delElement;
-	Count--;
+	count_--;
 }
 
 
-void List::DelAll()
+void List::delAll()
 {
-	while (Head != nullptr)
-		DelHead();
+	while (head_ != nullptr)
+		delHead();
 }
 
-int List::GetCount()
+int List::getCount()
 {
-	return Count;
+	return count_;
 }
 
-Elem * List::GetElem(int pos)
+Elem* List::getElem(int pos)
 {
-	Elem *temp = Head;
-	if (pos < 0 || pos >= Count)
+	Elem* temp = head_;
+	if (pos < 0 || pos >= count_)
 		return nullptr;
 	int i = 0;
 	while (i < pos)
@@ -194,15 +209,15 @@ Elem * List::GetElem(int pos)
 	return temp;
 }
 
-List& List::operator = (const List & L)
+List& List::operator = (const List& list)
 {
-	if (this == &L)
+	if (this == &list)
 		return *this;
-	DelAll();
-	Elem * temp = L.Head;
+	delAll();
+	Elem * temp = list.head_;
 	while (temp != nullptr)
 	{
-		AddTail(temp->data);
+		addTail(temp->data);
 		temp = temp->next;
 	}
 	return *this;

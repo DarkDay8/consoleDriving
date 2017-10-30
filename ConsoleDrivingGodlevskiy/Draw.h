@@ -1,10 +1,11 @@
-#pragma once
-#define __CONSOLELIB_H__
+#ifndef DRAW_H
+#define DRAW_H
+
 #include <windows.h>
 #include <iostream>
 #include "GameObject.h"
 
-// Цвета
+// Colors
 enum ConsoleColor
 {
 	Black = 0,
@@ -30,23 +31,15 @@ class Draw
 public:
 	Draw();
 	~Draw();
-	// Показываем/прячем текстовый курсор
-	void ShowCursor(bool visible);
 
-	// Устанавливает цвет символов и фона
-	void SetColor(ConsoleColor text, ConsoleColor background);
-
-	// Перемещает курсор в заданную позицию
-	void GotoXY(int X, int Y);
-
-	// Выводит заданную строку в заданную позицию
-	void WriteStr(int X, int Y, const char *Str);
-
-	//Выводит игровой обект на экран
-	void DrawGameObject(GameObject *gameObject, int maxY);
-
+	void showCursor(bool visible);
+	void setColor(ConsoleColor text, ConsoleColor background);
+	void gotoXY(int x, int y);
+	void writeStr(int x, int y, const char* str);
+	void drawGameObject(GameObject* gameObject, int maxY);
 };
-// Хендлы консоли
+
 extern HANDLE hStdOut;
 extern HANDLE hStdIn;
 
+#endif // DRAW_H

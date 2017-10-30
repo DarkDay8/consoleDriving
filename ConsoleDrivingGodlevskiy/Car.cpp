@@ -2,7 +2,6 @@
 
 Car::Car()
 {
-
 }
 
 
@@ -10,17 +9,17 @@ Car::~Car()
 {
 }
 
-void Car::SetSpeed(int speed)
+void Car::setSpeed(int speed)
 {
-	if (speed >= minSpeed && speed <= maxSpeed) this->speed = speed;
+	if (speed >= minSpeed_ && speed <= maxSpeed_) speed_ = speed;
 }
 
-int Car::GetMaxSpeed()
+int Car::getMaxSpeed()
 {
-	return maxSpeed;
+	return maxSpeed_;
 }
 
-int Car::GetSpeed()
+int Car::getSpeed()
 {
-	return speed;
+	return speed_;
 }

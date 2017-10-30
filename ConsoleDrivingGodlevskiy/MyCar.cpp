@@ -2,17 +2,17 @@
 
 MyCar::MyCar()
 {
-	x = 20;
-	y = 23;
-	viewHeight = 5;
-	viewWidht = 4;
-	maxSpeed = 15;
-	minSpeed = 0;
-	view = new char *[viewWidht];
-	view[0] = new char [viewHeight] {'/', '=', '=', '\\', '\0' };
-	view[1] = new char [viewHeight] { '0', ' ', ' ', '0', '\0' };
-	view[2] = new char [viewHeight] { '[', '[', ']', ']', '\0' };
-	view[3] = new char [viewHeight] { '0', '/', '\\', '0', '\0' };
+	x_ = 20;
+	y_ = 23;
+	viewHeight_ = 5;
+	viewWidht_ = 4;
+	maxSpeed_ = 15;
+	minSpeed_ = 0;
+	view_ = new char *[viewWidht_];
+	view_[0] = new char [viewHeight_] {'/', '=', '=', '\\', '\0' };
+	view_[1] = new char [viewHeight_] { '0', ' ', ' ', '0', '\0' };
+	view_[2] = new char [viewHeight_] { '[', '[', ']', ']', '\0' };
+	view_[3] = new char [viewHeight_] { '0', '/', '\\', '0', '\0' };
 
 }
 
@@ -20,7 +20,7 @@ MyCar::~MyCar()
 {
 }
 
-bool MyCar::IsDead()
+bool MyCar::isDead()
 {
 	return false;
 }

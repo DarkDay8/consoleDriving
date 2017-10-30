@@ -2,11 +2,11 @@
 
 int main()
 {
-	int maxLines = 30;
+	const int MAXLINE = 30;
 	system("mode con cols=70 lines=30");
 	srand(time(0));
-	Game Game(maxLines);
-	Game.StartGame();
+	Game game(MAXLINE);
+	game.startGame();
 }
 
 

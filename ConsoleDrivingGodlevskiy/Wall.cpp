@@ -2,25 +2,25 @@
 
 Wall::Wall()
 {
-	viewHeight = 6;
-	viewWidht = 3;
-	view = new char *[viewWidht];
-	view[0] = new char [viewHeight] {'/', '-', '-', '-', '\\', '\0'};
-	view[1] = new char [viewHeight] {'|', ' ', ' ', ' ', '|', '\0'};
-	view[2] = new char [viewHeight] {'\\', '-', '-', '-', '/', '\0'};
+	viewHeight_ = 6;
+	viewWidht_ = 3;
+	view_ = new char *[viewWidht_];
+	view_[0] = new char [viewHeight_] {'/', '-', '-', '-', '\\', '\0'};
+	view_[1] = new char [viewHeight_] {'|', ' ', ' ', ' ', '|', '\0'};
+	view_[2] = new char [viewHeight_] {'\\', '-', '-', '-', '/', '\0'};
 }
 
 Wall::Wall(int x, int y) : Wall()
 {
-	this->x = x;
-	this->y = y;
+	x_ = x;
+	y_ = y;
 }
 
 Wall::~Wall()
 {
 }
 
-bool Wall::IsDead()
+bool Wall::isDead()
 {
 	return false;
 }

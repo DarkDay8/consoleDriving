@@ -6,44 +6,44 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	for (int i = 0; i < viewWidht; i++)
+	for (int i = 0; i < viewWidht_; i++)
 	{
-		delete[] view[i];
+		delete[] view_[i];
 	}
-	delete[] view;
+	delete[] view_;
 }
 
-void GameObject::SetX(int x)
+void GameObject::setX(int x)
 {
-	this->x = x;
+	x_ = x;
 }
 
-void GameObject::SetY(int y)
+void GameObject::setY(int y)
 {
-	this->y = y;
+	y_ = y;
 }
 
-int GameObject::GetX()
+int GameObject::getX()
 {
-	return x;
+	return x_;
 }
 
-int GameObject::GetY()
+int GameObject::getY()
 {
-	return y;
+	return y_;
 }
 
-int GameObject::GetViewWidht()
+int GameObject::getViewWidht()
 {
-	return viewWidht;
+	return viewWidht_;
 }
 
-int GameObject::GetViewHeight()
+int GameObject::getViewHeight()
 {
-	return viewHeight;
+	return viewHeight_;
 }
 
-char ** GameObject::GetView()
+char** GameObject::getView()
 {
-	return view;
+	return view_;
 }

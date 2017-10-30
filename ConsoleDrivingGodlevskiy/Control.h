@@ -1,19 +1,20 @@
-#pragma once
-#include "Car.h"
-#include "Draw.h"
+#ifndef CONTROL_H
+#define CONTROL_H
+
 #include <Windows.h>
 #include <iostream>
+#include "Car.h"
+#include "Draw.h"
 
 class Control
 {
 public:
 	Control();
 	~Control();
-	//управление автомобилем
-	void CarControl(Car * car);
-	//установка игры на паузу
-	bool Pause(Draw * draw);
-	//Выход из игры
-	void Exit();
+
+	void carControl(Car* car);
+	bool pause(Draw* draw);
+	void exitGame();
 };
 
+#endif // CONTROL_H

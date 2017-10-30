@@ -1,7 +1,6 @@
 #include "Draw.h"
 using namespace std;
 
-// Хендлы консоли
 HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 HANDLE hStdIn = GetStdHandle(STD_INPUT_HANDLE);
 
@@ -13,39 +12,35 @@ Draw::~Draw()
 {
 }
 
-// Показываем/прячем текстовый курсор
-void Draw::ShowCursor(bool visible)
+
+void Draw::showCursor(bool visible)
 {
 	CONSOLE_CURSOR_INFO cci = { sizeof(cci), visible };
 	SetConsoleCursorInfo(hStdOut, &cci);
 }
 
-// Устанавливает цвет символов и фона
-void Draw::SetColor(ConsoleColor text, ConsoleColor background)
+void Draw::setColor(ConsoleColor text, ConsoleColor background)
 {
 	SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
 }
 
-// Перемещает курсор в заданную позицию
-void Draw::GotoXY(int X, int Y)
+void Draw::gotoXY(int x, int y)
 {
-	COORD coord = { X, Y };
+	COORD coord = { x, y };
 	SetConsoleCursorPosition(hStdOut, coord);
 }
 
-// Выводит заданную строку в заданную позицию
-void Draw::WriteStr(int X, int Y, const char *Str)
+void Draw::writeStr(int x, int y, const char* str)
 {
-	GotoXY(X, Y);
-	cout << Str << flush;
+	gotoXY(x, y);
+	cout << str << flush;
 }
 
-//Выводит игровой обект на экран
-void Draw::DrawGameObject(GameObject * gameObject, int maxY)
+void Draw::drawGameObject(GameObject* gameObject, int maxY)
 {
-	for (int i = 0; i < gameObject->GetViewWidht(); i++)
+	for (int i = 0; i < gameObject->getViewWidht(); i++)
 	{
-		if ((gameObject->GetY() + i < maxY) && (gameObject->GetY() + i >= 0))
-			WriteStr(gameObject->GetX(), gameObject->GetY() + i, gameObject->GetView()[i]);
+		if ((gameObject->getY() + i < maxY) && (gameObject->getY() + i >= 0))
+			writeStr(gameObject->getX(), gameObject->getY() + i, gameObject->getView()[i]);
 	}
 }

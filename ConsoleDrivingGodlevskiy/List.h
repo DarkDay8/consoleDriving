@@ -1,58 +1,38 @@
-#pragma once;
+#ifndef LIST_H
+#define LIST_H
+
 #include <iostream>
 #include "GameObject.h"
 
 struct Elem
 {
-	GameObject * data; // данные
-	Elem *next, *prev;
+	GameObject* data; 
+	Elem* next;
+	Elem* prev;
 };
 
 class List
 {
-	// Голова, хвост
-	Elem *Head, *Tail;
-	// Количество элементов
-	int Count;
-
 public:
-
-	// Конструктор
 	List();
-
-	// Конструктор копирования
-	List(const List&);
-
-	// Деструктор
+	List(const List& list);
 	~List();
+	List& operator = (const List& list);
 
-	// Получить количество элементов
-	int GetCount();
+	int getCount();
+	Elem* getElem(int);
+	void delAll();
+	void del(int pos);
+	void insert(GameObject * data, int pos);
+	void addTail(GameObject * data);
+	void addHead(GameObject * data);
+	void delHead();
+	void delTail();
 
-	// Получить элемент списка
-	Elem* GetElem(int);
-
-	// Удалить весь список
-	void DelAll();
-
-	// Удаление элемента по индексу
-	void Del(int pos);
-
-	// Вставка элемента в заданную позицию
-	void Insert(GameObject * data, int pos);
-
-	// Добавление в конец списка
-	void AddTail(GameObject * data);
-
-	// Добавление в начало списка
-	void AddHead(GameObject * data);
-
-	//Удаление головного элемента
-	void DelHead();
-
-	//Удаление хвостового элемента
-	void DelTail();
-
-	//перегрузка оператора =
-	List& operator = (const List&);
+private:
+	Elem* head_;
+	Elem* tail_;
+	int count_;
 };
+
+#endif // LIST_H

@@ -1,20 +1,23 @@
-#pragma once
+#ifndef CAR_H
+#define CAR_H
+
 #include "GameObject.h"
 
 class Car: public GameObject
 {
-protected:
-	int speed;
-	int maxSpeed;
-	int minSpeed;
+
 public:
 	Car();
 	~Car();
-	void SetSpeed(int speed);
-	int GetMaxSpeed();
-	int GetSpeed();
+	void setSpeed(int speed);
+	int getMaxSpeed();
+	int getSpeed();
+	virtual bool isDead() = 0;
 
-	virtual bool IsDead() = 0;
-
+protected:
+	int speed_;
+	int maxSpeed_;
+	int minSpeed_;
 };
 
+#endif // CAR_H

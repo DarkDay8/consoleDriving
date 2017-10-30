@@ -1,2 +1,6 @@
-#pragma once
+#ifndef CONSOLEDRIVINGGODLEVSKIY_H
+#define CONSOLEDRIVINGGODLEVSKIY_H
+
 #include "Game.h"
+
+#endif // CONSOLEDRIVINGGODLEVSKIY_H

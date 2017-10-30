@@ -116,6 +116,7 @@
     <ClCompile Include="ConsoleDrivingGodlevskiy.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="MyCar.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="ConsoleDrivingGodlevskiy.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="Draw.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MyCar.h" />

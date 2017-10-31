@@ -8,7 +8,7 @@ class Car: public GameObject
 
 public:
 	Car();
-	~Car();
+	virtual ~Car();
 	void setSpeed(int speed);
 	int getMaxSpeed();
 	int getSpeed();

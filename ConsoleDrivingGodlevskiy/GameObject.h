@@ -5,7 +5,7 @@ class GameObject
 {
 public:
 	GameObject();
-	~GameObject();
+	virtual ~GameObject();
 
 	void setX(int x);
 	void setY(int y);
@@ -13,13 +13,13 @@ public:
 	int getY();
 	int getViewWidht();
 	int getViewHeight();
-	char ** getView();
+	char** getView();
 	virtual bool isDead() = 0;
 
 protected:
 	int x_;
 	int y_;
-	char ** view_;
+	char** view_;
 	int viewHeight_;
 	int viewWidht_;
 };

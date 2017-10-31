@@ -8,7 +8,7 @@ class Border : public GameObject
 public:
 	Border();
 	Border(int x, int y);
-	~Border();
+	virtual ~Border();
 	bool isDead();
 };
 

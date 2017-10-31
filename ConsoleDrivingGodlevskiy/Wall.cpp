@@ -18,6 +18,7 @@ Wall::Wall(int x, int y) : Wall()
 
 Wall::~Wall()
 {
+
 }
 
 bool Wall::isDead()

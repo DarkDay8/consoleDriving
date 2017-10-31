@@ -7,7 +7,7 @@ class MyCar : public Car
 {
 public:
 	MyCar();
-	~MyCar();
+	virtual ~MyCar();
 	bool isDead();
 };
 

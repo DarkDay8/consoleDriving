@@ -37,9 +37,11 @@ public:
 	void gotoXY(int x, int y);
 	void writeStr(int x, int y, const char* str);
 	void drawGameObject(GameObject* gameObject, int maxY);
+private:
+	HANDLE hStdOut;
+	HANDLE hStdIn;
+
 };
 
-extern HANDLE hStdOut;
-extern HANDLE hStdIn;
 
 #endif // DRAW_H

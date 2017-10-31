@@ -12,7 +12,7 @@ GameObject::~GameObject()
 	}
 	delete[] view_;
 
-	delete[] view2_;
+	//delete[] view2_;
 }
 
 void GameObject::setX(int x)
@@ -25,32 +25,34 @@ void GameObject::setY(int y)
 	y_ = y;
 }
 
+//inline int GameObject::getX() //cresh!!! WTF???
 int GameObject::getX()
 {
 	return x_;
 }
 
-int GameObject::getY()
+ int GameObject::getY()
 {
 	return y_;
 }
 
-int GameObject::getViewWidht()
+ int GameObject::getViewWidht()
 {
 	return viewWidht_;
 }
 
-int GameObject::getViewHeight()
+ int GameObject::getViewHeight()
 {
 	return viewHeight_;
 }
 
-char** GameObject::getView()
+ char** GameObject::getView()
 {
 	return view_;
 }
 
-std::string* GameObject::getView2()
-{
-	return view2_;
-}
+// std::string* GameObject::getView2()
+//{
+//	return view2_;
+//}
+//

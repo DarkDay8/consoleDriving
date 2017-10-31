@@ -1,7 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <iostream>
 #include "GameObject.h"
 
 struct Elem

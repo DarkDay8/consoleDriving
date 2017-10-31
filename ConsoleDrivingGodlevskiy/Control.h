@@ -1,8 +1,7 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include <Windows.h>
-#include <iostream>
+#include <iostream>>
 #include "Car.h"
 #include "Draw.h"
 

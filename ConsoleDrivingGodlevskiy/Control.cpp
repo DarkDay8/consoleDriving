@@ -33,11 +33,12 @@ void Control::carControl(Car* car)
 
 bool Control::pause(Draw* draw)
 {
-		if (GetKeyState(VK_RETURN))
-		{
-			draw->writeStr(25, 28, "PAUSE!!!");
-			return true;			
-		}	
+	if (GetKeyState(VK_RETURN))
+	{
+		draw->writeStr(25, 28, "PAUSE!!!");
+		return true;			
+	}
+	return false;
 }
 
 void Control::exitGame()

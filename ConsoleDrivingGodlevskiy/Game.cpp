@@ -1,11 +1,7 @@
 #include "Game.h"
 
-
-
-Game::Game(int maxLines)
+Game::Game(int maxLines) : maxLines_(maxLines)
 {
-	maxLines_ = maxLines;
-
 	for (int i = maxLines - 1; i >= 0; i--)
 	{
 		addNewBorder(borderlist_, leftX_, rightX_, i);

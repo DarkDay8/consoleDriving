@@ -11,6 +11,8 @@ GameObject::~GameObject()
 		delete[] view_[i];
 	}
 	delete[] view_;
+
+	delete[] view2_;
 }
 
 void GameObject::setX(int x)
@@ -46,4 +48,9 @@ int GameObject::getViewHeight()
 char** GameObject::getView()
 {
 	return view_;
+}
+
+std::string* GameObject::getView2()
+{
+	return view2_;
 }

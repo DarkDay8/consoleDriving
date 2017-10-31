@@ -7,6 +7,7 @@ Border::Border()
 	view_ = new char* [viewWidht_];
 	view_[0] = new char [viewHeight_] {'|', '\0'};
 
+	view2_ = new std::string[viewWidht_]{ "|" };
 }
 
 Border::Border(int x, int y) : Border()

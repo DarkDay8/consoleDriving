@@ -3,9 +3,7 @@
 
 Control::Control()
 {
-
 }
-
 
 Control::~Control()
 {

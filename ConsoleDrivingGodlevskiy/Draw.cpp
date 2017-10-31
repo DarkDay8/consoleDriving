@@ -38,9 +38,15 @@ void Draw::writeStr(int x, int y, const char* str)
 
 void Draw::drawGameObject(GameObject* gameObject, int maxY)
 {
+	char* tmp = nullptr;
+
 	for (int i = 0; i < gameObject->getViewWidht(); i++)
-	{
+	{	
+		tmp = const_cast<char*>(gameObject->getView2()[i].c_str());
+
 		if ((gameObject->getY() + i < maxY) && (gameObject->getY() + i >= 0))
-			writeStr(gameObject->getX(), gameObject->getY() + i, gameObject->getView()[i]);
+			writeStr(gameObject->getX(), gameObject->getY() + i, tmp);		
+		//writeStr(gameObject->getX(), gameObject->getY() + i, gameObject->getView()[i]);
 	}
+	tmp = nullptr;
 }

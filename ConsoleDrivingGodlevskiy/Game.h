@@ -23,6 +23,8 @@ public:
 	void drawInterface(Draw& draw, MyCar& car, int distance);
 	void gameOver(Draw& draw, int distance);
 	void startGame();
+	void borderManagement(GameObject* border);
+	void wallManagement(GameObject* wall, int currentIndex);
 
 protected:
 	Control control_;

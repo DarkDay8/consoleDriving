@@ -58,8 +58,46 @@ void Game::gameOver(Draw& draw, int distance)
 	exit(0);
 }
 
+void Game::borderManagement(GameObject* border)
+{
+	bool topLeft, topRight, bottonLeft, bottonRigth;
+
+	topLeft = myCar_.getX() <= border->getX();
+	topRight = myCar_.getX() + myCar_.getViewHeight() - 2 >= border->getX();
+	bottonLeft = myCar_.getY() <= border->getY();
+	bottonRigth = myCar_.getY() + myCar_.getViewWidht() - 1 >= border->getY();
+
+	if (topLeft && topRight && bottonLeft && bottonRigth)
+		gameOver(draw_, distance_);
+
+	draw_.drawGameObject(border, maxLines_);
+	border->setY(border->getY() + 1);
+}
+
+void Game::wallManagement(GameObject* wall, int currentIndex)
+{
+	bool topLeft, topRight, bottonLeft, bottonRigth;
+
+	topLeft = myCar_.getX() <= wall->getX() + wall->getViewHeight() - 2;
+	topRight = myCar_.getX() + myCar_.getViewHeight() - 2 >= wall->getX();
+	bottonLeft = myCar_.getY() <= wall->getY() + wall->getViewWidht() - 1;
+	bottonRigth = myCar_.getY() + myCar_.getViewWidht() - 1 >= wall->getY();
+
+	if (topLeft && topRight && bottonLeft && bottonRigth)
+		gameOver(draw_, distance_);
+
+	wall->setY(wall->getY() + 1);
+
+	if (wall->getY() > maxLines_)
+		wallList_.del(currentIndex);
+
+	draw_.drawGameObject(wall, maxLines_);
+}
+
+
 void Game::startGame()
 {
+	bool topLeft, topRight, bottonLeft, bottonRigth;
 	draw_.showCursor(false);
 
 	for (int i = maxLines_ - 1; i >= 0; i--)
@@ -75,37 +113,13 @@ void Game::startGame()
 			system("cls");
 
 			for (int i = 0; i < maxLines_ * 2; i++)
-			{
-				if ((myCar_.getX() <= borderlist_.getElem(i)->data->getX()) &&
-					(myCar_.getX() + myCar_.getViewHeight() - 2 >= borderlist_.getElem(i)->data->getX()) &&
-					(myCar_.getY() <= borderlist_.getElem(i)->data->getY()) &&
-					(myCar_.getY() + myCar_.getViewWidht() - 1 >= borderlist_.getElem(i)->data->getY()))
-				{
-					gameOver(draw_, distance_);
-				}
-
-				draw_.drawGameObject(borderlist_.getElem(i)->data, maxLines_);
-				borderlist_.getElem(i)->data->setY(borderlist_.getElem(i)->data->getY() + 1);
-			}
+				borderManagement(borderlist_.getElem(i)->data);
 
 			draw_.setColor(Yellow, Black);
 
 			for (int i = 0; i < wallList_.getCount(); i++)
-			{
-				if ((myCar_.getX() <= wallList_.getElem(i)->data->getX() + wallList_.getElem(i)->data->getViewHeight() - 2) &&
-					(myCar_.getX() + myCar_.getViewHeight() - 2 >= wallList_.getElem(i)->data->getX()) &&
-					(myCar_.getY() <= wallList_.getElem(i)->data->getY() + wallList_.getElem(i)->data->getViewWidht() - 1) &&
-					(myCar_.getY() + myCar_.getViewWidht() - 1 >= wallList_.getElem(i)->data->getY()))
-				{
-					gameOver(draw_, distance_);
-				}
+				wallManagement(wallList_.getElem(i)->data, i);
 
-				draw_.drawGameObject(wallList_.getElem(i)->data, maxLines_);
-				wallList_.getElem(i)->data->setY(wallList_.getElem(i)->data->getY() + 1);
-
-				if (wallList_.getElem(i)->data->getY() > maxLines_)
-					wallList_.del(i);
-			}
 			draw_.setColor(White, Black);
 			drawCar(draw_, myCar_, maxLines_);
 			drawInterface(draw_, myCar_, distance_);
